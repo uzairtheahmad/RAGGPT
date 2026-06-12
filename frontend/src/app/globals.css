@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #0d0d0d;
+  --muted: #6b7280;
+  --sidebar: #f7f7f8;
+  --sidebar-hover: #ececec;
+  --sidebar-active: #e3e3e6;
+  --border: #e5e5e5;
+  --bubble-user: #f1f1f3;
+  --surface: #ffffff;
+  --surface-2: #f7f7f8;
+  --accent: #0d0d0d;
+  --accent-foreground: #ffffff;
+  --danger: #dc2626;
+  --code-bg: #f4f4f5;
+}
+
+.dark {
+  --background: #212121;
+  --foreground: #ececec;
+  --muted: #9ca3af;
+  --sidebar: #171717;
+  --sidebar-hover: #242424;
+  --sidebar-active: #2d2d2d;
+  --border: #3a3a3a;
+  --bubble-user: #2f2f2f;
+  --surface: #2a2a2a;
+  --surface-2: #303030;
+  --accent: #ececec;
+  --accent-foreground: #171717;
+  --danger: #f87171;
+  --code-bg: #1b1b1b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-hover: var(--sidebar-hover);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-border-token: var(--border);
+  --color-bubble-user: var(--bubble-user);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-danger: var(--danger);
+  --color-code-bg: var(--code-bg);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth color transitions when toggling theme */
+body,
+aside,
+header,
+main {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Thin scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* Typing indicator */
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+.typing-dot {
+  animation: typing-bounce 1.2s infinite ease-in-out;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+/* Streaming caret */
+@keyframes caret-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.stream-caret {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--foreground);
+  border-radius: 1px;
+  animation: caret-blink 0.9s infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fade-up 0.25s ease both;
+}
+
+/* Markdown body inside assistant messages */
+.prose-chat {
+  line-height: 1.7;
+  word-break: break-word;
+}
+.prose-chat > * + * { margin-top: 0.75em; }
+.prose-chat h1, .prose-chat h2, .prose-chat h3 {
+  font-weight: 600;
+  margin-top: 1.2em;
+}
+.prose-chat h1 { font-size: 1.25em; }
+.prose-chat h2 { font-size: 1.15em; }
+.prose-chat h3 { font-size: 1.05em; }
+.prose-chat ul { list-style: disc; padding-left: 1.4em; }
+.prose-chat ol { list-style: decimal; padding-left: 1.4em; }
+.prose-chat li { margin-top: 0.25em; }
+.prose-chat a { text-decoration: underline; }
+.prose-chat strong { font-weight: 600; }
+.prose-chat blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 0.9em;
+  color: var(--muted);
+}
+.prose-chat code {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+  font-size: 0.875em;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+.prose-chat pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9em 1em;
+  overflow-x: auto;
+}
+.prose-chat pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.prose-chat table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9em;
+}
+.prose-chat th, .prose-chat td {
+  border: 1px solid var(--border);
+  padding: 0.4em 0.7em;
+  text-align: left;
+}
+.prose-chat th { background: var(--surface-2); font-weight: 600; }

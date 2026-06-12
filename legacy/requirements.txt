@@ -1,0 +1,32 @@
+# LangChain core
+langchain
+langchain-core
+langchain-community
+
+# LLM and embeddings
+langchain-openai
+openai
+tiktoken
+
+# Vector database
+langchain-chroma
+chromadb
+
+# Document loading
+pypdf
+docx2txt
+unstructured
+
+# Environment variables
+python-dotenv
+
+# API backend
+fastapi
+uvicorn
+
+# Frontend / demo app
+streamlit
+
+# Utilities
+numpy
+pandas

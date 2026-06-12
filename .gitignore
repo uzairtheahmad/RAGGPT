@@ -1,0 +1,25 @@
+# Environment
+.env
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+backend/.venv/
+backend/data/
+
+# Node
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Personal test documents (not part of the project)
+GRU.pdf
+notes.txt
+
+# Local tooling config
+.claude/
